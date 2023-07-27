@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
         redirect_to sign_in_path, alert: "You must be signed in to do that." if Current.user.nil?
     end
 
+    private 
+
+    def password_params
+        params.require(:user).permit(:password, :password_confirmation)
+    end
+
 end
